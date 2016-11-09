@@ -1,0 +1,10 @@
+{{#each starredQuestions.questions as |question|}}
+  <div class="well questionTiles">
+    {{#link-to 'question' question.id}}
+      <h3>{{question.mainQuestion}}</h3>
+    {{/link-to}}
+    <h5>Asked by {{question.author}} on {{question.timestamp}}</h5>
+    {{noAnswers question}}<br>
+    <button class="btn-btn default" id="addToFavorites" {{action 'removeFromFavorites' question}}>Remove From Favorites</button>
+  </div>
+{{/each}}

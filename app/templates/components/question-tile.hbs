@@ -1,0 +1,21 @@
+<div style="text-align: center">
+  <div class="filters">
+    <button class="btn btn-primary" {{action 'best'}}>Best</button>
+    <button class="btn btn-danger" {{action 'worst'}}>Worst</button>
+  </div>
+</div>
+{{#each sortedQuestions as |question|}}
+  <div class="well questionTiles">
+    <div class="voting">
+      <button id="downvote" class="btn btn-danger"{{action 'downvote' question}} disabled={{downvoted}}>⬇</button>
+      <h5 id="rating">{{question.rating}}</h5>
+      <button id="upvote"class="btn btn-primary"{{action 'upvote' question}} disabled={{upvoted}}>⬆</button>
+    </div>
+    {{#link-to 'question' question.id}}
+      <h3>{{question.mainQuestion}}</h3>
+    {{/link-to}}
+    <h5>Asked by {{question.author}} on {{question.timestamp}}</h5>
+    {{noAnswers question}}<br>
+    <button class="btn-btn default" id="addToFavorites" {{action 'starThis' question}}>Add to Favorites</button>
+  </div>
+{{/each}}

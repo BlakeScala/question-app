@@ -1,0 +1,21 @@
+<div class ="well" id="comments">
+  <h1>Comments</h1>
+  <div style="text-align: center">
+    <div class="filters">
+      <button class="btn btn-primary" {{action 'best'}}>Best</button>
+      <button class="btn btn-danger" {{action 'worst'}}>Worst</button>
+    </div>
+  </div>
+  <br>
+  {{#each sortedAnswers as |answer|}}
+  <div class="well" id="commentWell">
+    <div class="voting">
+      <button id="downvoteComment" class="btn btn-danger"{{action 'downvote' answer}} disabled={{downvoted}}>⬇</button>
+      <h5 id="commentRating">{{answer.rating}}</h5>
+      <button id="upvoteComment" class="btn btn-primary"{{action 'upvote' answer}} disabled={{upvoted}}>⬆</button>
+    </div>
+    <p><span class="bold">{{answer.author}} :</span> {{answer.content}}</p>
+  </div>
+  <br>
+  {{/each}}
+</div>
